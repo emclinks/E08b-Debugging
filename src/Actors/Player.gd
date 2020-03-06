@@ -4,15 +4,15 @@ extends Actor
 export var stomp_impulse: = 600.0
 
 
-func _on_StompDetector_area_entered(area: Area2D) -> void:
+func _on_StompDetector_area_entered(_area: Area2D) -> void:
 	_velocity = calculate_stomp_velocity(_velocity, stomp_impulse)
 
 
-func _on_EnemyDetector_body_entered(body: PhysicsBody2D) -> void:
+func _on_EnemyDetector_body_entered(_body: PhysicsBody2D) -> void:
 	die()
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var is_jump_interrupted: = Input.is_action_just_released("jump") and _velocity.y < 0.0
 	var direction: = get_direction()
 	_velocity = calculate_move_velocity(_velocity, direction, speed, is_jump_interrupted)
@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 
 func get_direction() -> Vector2:
 	return Vector2(
-		Input.get_action_strength("Move_right") - Input.get_action_strength("move_left"),
+		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 		-Input.get_action_strength("jump") if is_on_floor() and Input.is_action_just_pressed("jump") else 0.0
 	)
 

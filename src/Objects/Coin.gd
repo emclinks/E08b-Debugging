@@ -6,7 +6,7 @@ onready var anim_player: AnimationPlayer = $AnimationPlayer
 export var score: = 100
 
 
-func _on_body_entered(body: PhysicsBody2D) -> void:
+func _on_body_entered(_body: PhysicsBody2D) -> void:
 	picked()
 
 
